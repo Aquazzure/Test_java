@@ -12,9 +12,16 @@ public class TestJDBC {
         String userPwd="0504";
         try {
             // 连接数据库
+            //注册驱动
             Class.forName(driverName);
+            //获取数据库连接对象
             Connection con=DriverManager.getConnection(dbURL,userName,userPwd);
-            String sql="update account set balance=600 where id=1";
+            //删除
+            String sql="delete from account where name='赵四'";
+            //插入
+            //String sql="insert account values(3,'赵四','888')";
+            //更新
+            //String sql="update account set balance=500 where id=1";
             Statement stmt=con.createStatement();
             int i =stmt.executeUpdate(sql);
             if(i==1){
