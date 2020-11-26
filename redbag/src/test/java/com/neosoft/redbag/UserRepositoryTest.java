@@ -18,19 +18,19 @@ public class UserRepositoryTest {
     @Test
     public void save(){
         User user = new User();
-        user.setUsername("小子");
+        user.setUsername("小子5");
         user.setPassword("2180");
         user.setEmail("dsads");
         repository.save(user);
     }
-    @Test
-    public void update(){
-        User user = new User();
-        user.setId("4028778175fe84190175fe8427ac0002");
-        user.setUsername("lkjx");
-        user.setPassword("7777");
-        repository.save(user);
-    }
+//    @Test
+//    public void update(){
+//        User user = new User();
+//        user.setId("4028778175fe84190175fe8427ac0010");
+//        user.setUsername("lkjx");
+//        user.setPassword("7777");
+//        repository.save(user);
+//    }
 
     @Test
     public void delete(){
