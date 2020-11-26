@@ -26,7 +26,7 @@ public class UserController {
 //    @GetMapping("/{id}")
 //    public User update(@PathVariable("id")String id, @RequestBody User user){
 //        user.setId(id);
-//        return userRepository.save(user);
+//        return user   mRepository.save(user);
 //    }
 
     //分页参数   页首和每页多少个
