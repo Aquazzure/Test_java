@@ -1,7 +1,6 @@
 package com.neusoft.springbootsell.repository;
 
 import com.neusoft.springbootsell.dataobject.OrderMaster;
-import freemarker.cache.OrMatcher;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +21,7 @@ public class OrderMasterRepositoryTest {
     public void saveTest(){
         OrderMaster orderMaster = new OrderMaster();
         orderMaster.setOrderId("1234567");
-        orderMaster.setUserName("小丸子");
+        orderMaster.setBuyerName("小丸子");
         orderMaster.setBuyerPhone("10086");
         orderMaster.setBuyerAddress("江科大西门");
         orderMaster.setOrderId(OPENID);

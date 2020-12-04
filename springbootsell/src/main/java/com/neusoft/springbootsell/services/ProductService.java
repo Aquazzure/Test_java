@@ -1,6 +1,7 @@
 package com.neusoft.springbootsell.services;
 
 import com.neusoft.springbootsell.dataobject.ProductInfo;
+import com.neusoft.springbootsell.dto.CartDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,9 +17,12 @@ public interface ProductService {
     //新增商品
     ProductInfo save(ProductInfo productInfo);
     //上架
-    void increaseStock(String productId);
+    ProductInfo onSale(String productId);
     //下架
-    void decreaseStock(String productId);
+    ProductInfo offSale(String productId);
     //加库存
+    void increaseStock(List<CartDTO> cartDTOList);
+
     //减库存
+    void decreaseStock(List<CartDTO> cartDTOList);
 }

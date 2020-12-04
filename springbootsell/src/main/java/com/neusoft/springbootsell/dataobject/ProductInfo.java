@@ -1,12 +1,12 @@
 package com.neusoft.springbootsell.dataobject;
 
-import com.neusoft.springbootsell.enums.PayStatusEnum;
 import com.neusoft.springbootsell.enums.ProductStatusEnum;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -43,9 +43,15 @@ public class ProductInfo {
     private Integer categoryType;
 
     /** 创建时间*/
+    @Column(name = "create_time",updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date createTime;
 
     /** 更新时间*/
+    @Column(name = "update_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date updateTime;
 
 }

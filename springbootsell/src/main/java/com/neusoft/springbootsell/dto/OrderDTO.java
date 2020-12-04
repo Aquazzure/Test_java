@@ -1,26 +1,25 @@
-package com.neusoft.springbootsell.dataobject;
+package com.neusoft.springbootsell.dto;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.neusoft.springbootsell.dataobject.OrderDetail;
 import com.neusoft.springbootsell.enums.OrderStatusEnum;
 import com.neusoft.springbootsell.enums.PayStatusEnum;
 import com.neusoft.springbootsell.utils.EnumUtil;
+import com.neusoft.springbootsell.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-
-/**订单主表*/
-@Entity
 @Data
-public class OrderMaster {
+//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+public class OrderDTO {
 
     /**订单**/
-    @Id
     private String orderId;
 
     /**买家名字 **/
@@ -39,19 +38,20 @@ public class OrderMaster {
     private BigDecimal orderAmount;
 
     /**订单状态，默认为新下单*/
-    private Integer orderStatus= OrderStatusEnum.NEW.getCode();
+    private Integer orderStatus;
 
     /**支付状态，默认为0未支付*/
-    private Integer payStatus= PayStatusEnum.WAIT.getCode();
+    private Integer payStatus;
 
     /**创建时间*/
+    @JsonSerialize(using= Date2LongSerializer.class)
     private Date createTime;
 
     /**更新时间*/
+    @JsonSerialize(using=Date2LongSerializer.class)
     private Date updateTime;
 
-    @OneToMany(targetEntity = OrderDetail.class)
-    List<OrderDetail> orderDetailList;//=new ArrayList<>();
+    List<OrderDetail> orderDetailList;
 
     @JsonIgnore
     public OrderStatusEnum getOrderStatusEnum(){
@@ -60,7 +60,8 @@ public class OrderMaster {
 
     @JsonIgnore
     public PayStatusEnum getPayStatusEnum(){
-        return EnumUtil.getByCode(payStatus,PayStatusEnum.class);
+        return EnumUtil.getByCode(payStatus, PayStatusEnum.class);
     }
+
 
 }

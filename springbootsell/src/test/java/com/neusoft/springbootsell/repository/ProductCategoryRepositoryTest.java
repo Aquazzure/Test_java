@@ -21,8 +21,11 @@ public class ProductCategoryRepositoryTest {;
         ProductCategory productCategory = new ProductCategory("老味居",10);
         ProductCategory category = productCategoryRepository.save(productCategory);
         Assert.assertNotNull(category);
+    }
 
-
+    @Test
+    public void delete(){
+        productCategoryRepository.delete(4);
     }
 
 }
